@@ -1,0 +1,90 @@
+:host {
+  display: block;
+  position: relative;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  width: 280px;
+  font: 14px 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  contain: content;
+}
+
+.search {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search input {
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.search .material-icons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 22px;
+}
+
+.list {
+  max-height: 300px;
+  overflow: scroll;
+  position: relative;
+}
+
+.repo, .header {
+  display: flex;
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header {
+  background-color: #eee;
+}
+
+.repo:hover {
+  background-color: #eee;
+}
+
+.name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 75%;
+}
+
+.stars {
+  text-align: right;
+  flex: 1 25%;
+}
+
+.header .stars {
+  text-align: left;
+}
+
+.material-icons {
+  font-size: 14px;
+  vertical-align: bottom;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 6px;
+  font-size: 12px;
+  padding-top: 30px;
+  text-align: center;
+  color: #ccc;
+  background: linear-gradient(rgba(255, 255, 255, 0), #eee 50%);
+  pointer-events: none;
+}

@@ -1,0 +1,35 @@
+<div class="search">
+  <input name="query" placeholder="Keywords or repo name" bind />
+  <i class="material-icons">search</i>
+</div>
+<div>
+<div class="header">
+  <span class="name" #click="sortBy('_score') & throttle 1000">Name
+    <span @if="sort === '_score' && order === 'desc'">
+      <i class="material-icons">keyboard_arrow_down</i>
+    </span>
+    <span @if="sort === '_score' && order === 'asc'">
+      <i class="material-icons">keyboard_arrow_up</i>
+    </span>
+  </span>
+  <span class="stars" #click="sortBy('stars') & throttle 1000">Stars
+    <span @if="sort === 'stars' && order === 'desc'">
+      <i class="material-icons">keyboard_arrow_down</i>
+    </span>
+    <span @if="sort === 'stars' && order === 'asc'">
+      <i class="material-icons">keyboard_arrow_up</i>
+    </span>
+  </span>
+</div>
+<div @repeat="repos" repeat-value="repo" track-by="id" class="list">
+  <a $href="repo.html_url" target="_blank" class="repo"
+    enter-animation="fadeIn" leave-animation="fadeOut" move-animation>
+    <span class="name">${repo.full_name || repo.name}</span>
+    <span class="stars">${repo.stargazers_count}
+      <i class="material-icons">star</i>
+    </span>
+  </a>
+</div>
+<div class="footer">
+  <slot name="footer">2016 Bertalan Miklos</slot>
+</div>

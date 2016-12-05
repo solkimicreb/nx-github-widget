@@ -1,0 +1,33 @@
+{
+  "name": "github-widget",
+  "version": "1.0.0",
+  "description": "A GitHub search widget example project for the NX framework.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "NX",
+    "framework",
+    "ES6",
+    "WebComponent",
+    "example"
+  ],
+  "author": "Bertalan Miklos",
+  "license": "MIT",
+  "dependencies": {
+    "@risingstack/nx-framework": "1.0.0-alpha.5.0.0",
+    "whatwg-fetch": "2.0.1"
+  },
+  "devDependencies": {
+    "pre-commit": "1.1.3",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.9.0",
+    "raw-loader": "0.5.1",
+    "style-loader": "0.13.1",
+    "to-string-loader": "^1.1.5",
+    "url-loader": "^0.5.7",
+    "webpack": "1.13.3"
+  },
+  "pre-commit": "build"
+}
