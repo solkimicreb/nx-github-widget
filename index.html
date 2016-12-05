@@ -13,28 +13,19 @@
         padding: 0px;
         font: 18px 'Raleway', sans-serif;
       }
-      div {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        align-items: center;
+      .container {
         width: 100%;
-        max-width: 610px;
+        max-width: 300px;
         margin: auto;
         margin-top: 20px;
       }
       github-widget {
-        flex: 1 auto;
-        max-width: 280px;
-        margin: 10px
-      }
-      .text {
-        flex: 1 auto;
-        text-align: center;
-        max-width: 280px;
+        max-width: 300px;
+        margin: 10px;
       }
       p {
-        margin: 10px;
+        text-align: center;
+        margin: 20px 10px;
       }
       a {
         cursor: pointer;
@@ -47,18 +38,16 @@
     </style>
   </head>
   <body>
-    <div>
+    <div class="container">
       <github-widget></github-widget>
-      <div class="text">
-        <p>
-          This is an example widget, demonstrating the data-binding, event handling, animation and shadow DOM
-          capabilities of the <a href="http://www.nx-framework.com">NX framework</a>.
-        </p>
-        <p>
-           The widget's source code can be found in <a href="https://github.com/solkimicreb/nx-github-widget">this repo</a>.
-           A tutorial on how to create a widget like this can be found <a href="http://www.nx-framework.com/blog/public/github-widget/">here</a>.
-        </p>
-      </div>
+      <p>
+        This is an example widget, demonstrating the data-binding, event handling, animation and shadow DOM
+        capabilities of the <a href="http://www.nx-framework.com">NX framework</a>.
+      </p>
+      <p>
+         The widget's source code can be found in <a href="https://github.com/solkimicreb/nx-github-widget">this repo</a>.
+         A tutorial on how to create a widget like this can be found <a href="http://www.nx-framework.com/blog/public/github-widget/">here</a>.
+      </p>
     </div>
   </body>
 </html>
