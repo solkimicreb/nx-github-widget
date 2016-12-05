@@ -1,7 +1,7 @@
 {
-  "name": "github-widget",
+  "name": "nx-github-widget",
   "version": "1.0.0",
-  "description": "A GitHub search widget example project for the NX framework.",
+  "description": "A GitHub widget with animations and shadow DOM, written in NX.",
   "main": "index.js",
   "scripts": {
     "build": "webpack"

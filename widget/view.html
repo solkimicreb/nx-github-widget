@@ -2,7 +2,6 @@
   <input name="query" placeholder="Keywords or repo name" bind />
   <i class="material-icons">search</i>
 </div>
-<div>
 <div class="header">
   <span class="name" #click="sortBy('_score') & throttle 1000">Name
     <span @if="sort === '_score' && order === 'desc'">

@@ -44,16 +44,19 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1)
+	/* WEBPACK VAR INJECTION */(function(module) {'use strict'
+
+	__webpack_require__(2)
 	__webpack_require__(53)
 	__webpack_require__(54)
 
-	const SEARCH_URL = 'https://api.github.com/search/repositories'
+	const API_URL = 'https://api.github.com/search/repositories'
 
-	// also do module.exports
-	window.widget = function widget (config) {
+	// this is an NX component factory function
+	function widget (config) {
 	  config = config || { shadow: true }
 
+	  // this creates an NX app component
 	  return nx.components.app()
 	    .use(nx.middlewares.render({
 	      template: __webpack_require__(65),
@@ -63,6 +66,7 @@
 	    .use(setup)
 	}
 
+	// this is a middleware
 	function setup (elem, state) {
 	  state.sort = state.sort || 'stars'
 	  state.order = state.order || 'desc'
@@ -77,15 +81,37 @@
 	  }
 
 	  elem.$observe(function fetchRepos () {
-	    fetch(`${SEARCH_URL}?q=${state.query}&sort=${state.sort}&order=${state.order}`)
+	    fetch(`${API_URL}?q=${state.query}&sort=${state.sort}&order=${state.order}`)
 	      .then(resp => resp.json())
 	      .then(data => state.repos = data.items)
 	  })
 	}
 
+	if (module && module.exports) {
+	  module.exports = widget
+	}
+	window.widget = widget
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {'use strict'
@@ -117,23 +143,7 @@
 	  window.nx = nx
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ },
 /* 3 */
@@ -4070,7 +4080,7 @@
 /* 65 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"search\">\n  <input name=\"query\" placeholder=\"Keywords or repo name\" bind />\n  <i class=\"material-icons\">search</i>\n</div>\n<div>\n<div class=\"header\">\n  <span class=\"name\" #click=\"sortBy('_score') & throttle 1000\">Name\n    <span @if=\"sort === '_score' && order === 'desc'\">\n      <i class=\"material-icons\">keyboard_arrow_down</i>\n    </span>\n    <span @if=\"sort === '_score' && order === 'asc'\">\n      <i class=\"material-icons\">keyboard_arrow_up</i>\n    </span>\n  </span>\n  <span class=\"stars\" #click=\"sortBy('stars') & throttle 1000\">Stars\n    <span @if=\"sort === 'stars' && order === 'desc'\">\n      <i class=\"material-icons\">keyboard_arrow_down</i>\n    </span>\n    <span @if=\"sort === 'stars' && order === 'asc'\">\n      <i class=\"material-icons\">keyboard_arrow_up</i>\n    </span>\n  </span>\n</div>\n<div @repeat=\"repos\" repeat-value=\"repo\" track-by=\"id\" class=\"list\">\n  <a $href=\"repo.html_url\" target=\"_blank\" class=\"repo\"\n    enter-animation=\"fadeIn\" leave-animation=\"fadeOut\" move-animation>\n    <span class=\"name\">${repo.full_name || repo.name}</span>\n    <span class=\"stars\">${repo.stargazers_count}\n      <i class=\"material-icons\">star</i>\n    </span>\n  </a>\n</div>\n<div class=\"footer\">\n  <slot name=\"footer\">2016 Bertalan Miklos</slot>\n</div>\n"
+	module.exports = "<div class=\"search\">\n  <input name=\"query\" placeholder=\"Keywords or repo name\" bind />\n  <i class=\"material-icons\">search</i>\n</div>\n<div class=\"header\">\n  <span class=\"name\" #click=\"sortBy('_score') & throttle 1000\">Name\n    <span @if=\"sort === '_score' && order === 'desc'\">\n      <i class=\"material-icons\">keyboard_arrow_down</i>\n    </span>\n    <span @if=\"sort === '_score' && order === 'asc'\">\n      <i class=\"material-icons\">keyboard_arrow_up</i>\n    </span>\n  </span>\n  <span class=\"stars\" #click=\"sortBy('stars') & throttle 1000\">Stars\n    <span @if=\"sort === 'stars' && order === 'desc'\">\n      <i class=\"material-icons\">keyboard_arrow_down</i>\n    </span>\n    <span @if=\"sort === 'stars' && order === 'asc'\">\n      <i class=\"material-icons\">keyboard_arrow_up</i>\n    </span>\n  </span>\n</div>\n<div @repeat=\"repos\" repeat-value=\"repo\" track-by=\"id\" class=\"list\">\n  <a $href=\"repo.html_url\" target=\"_blank\" class=\"repo\"\n    enter-animation=\"fadeIn\" leave-animation=\"fadeOut\" move-animation>\n    <span class=\"name\">${repo.full_name || repo.name}</span>\n    <span class=\"stars\">${repo.stargazers_count}\n      <i class=\"material-icons\">star</i>\n    </span>\n  </a>\n</div>\n<div class=\"footer\">\n  <slot name=\"footer\">2016 Bertalan Miklos</slot>\n</div>\n"
 
 /***/ },
 /* 66 */

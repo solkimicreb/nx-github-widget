@@ -1,13 +1,16 @@
+'use strict'
+
 require('@risingstack/nx-framework')
 require('whatwg-fetch')
 require('style!./fonts/index.css')
 
-const SEARCH_URL = 'https://api.github.com/search/repositories'
+const API_URL = 'https://api.github.com/search/repositories'
 
-// also do module.exports
-window.widget = function widget (config) {
+// this is an NX component factory function
+function widget (config) {
   config = config || { shadow: true }
 
+  // this creates an NX app component
   return nx.components.app()
     .use(nx.middlewares.render({
       template: require('./view.html'),
@@ -17,6 +20,7 @@ window.widget = function widget (config) {
     .use(setup)
 }
 
+// this is a middleware
 function setup (elem, state) {
   state.sort = state.sort || 'stars'
   state.order = state.order || 'desc'
@@ -31,8 +35,13 @@ function setup (elem, state) {
   }
 
   elem.$observe(function fetchRepos () {
-    fetch(`${SEARCH_URL}?q=${state.query}&sort=${state.sort}&order=${state.order}`)
+    fetch(`${API_URL}?q=${state.query}&sort=${state.sort}&order=${state.order}`)
       .then(resp => resp.json())
       .then(data => state.repos = data.items)
   })
 }
+
+if (module && module.exports) {
+  module.exports = widget
+}
+window.widget = widget
