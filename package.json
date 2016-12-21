@@ -1,6 +1,6 @@
 {
   "name": "nx-github-widget",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A GitHub widget with animations and shadow DOM, written in NX.",
   "main": "index.js",
   "scripts": {
