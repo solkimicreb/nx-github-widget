@@ -11,7 +11,7 @@ function widget (config) {
   config = config || { shadow: true }
 
   // this creates an NX app component
-  return nx.components.app()
+  return nx.components.app(config)
     .use(nx.middlewares.render({
       template: require('./view.html'),
       style: require('./styles/index.css'),

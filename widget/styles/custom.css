@@ -6,7 +6,6 @@
   border-radius: 2px;
   width: 280px;
   font: 14px 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased;
   contain: content;
 }
 
@@ -33,7 +32,7 @@
 }
 
 .list {
-  max-height: 300px;
+  height: 300px;
   overflow: scroll;
   position: relative;
 }

@@ -13,10 +13,17 @@
     "WebComponent",
     "example"
   ],
-  "author": "Bertalan Miklos",
+  "author": {
+    "name": "Miklos Bertalan",
+    "email": "miklos.bertalan@risingstack.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:solkimicreb/nx-github-widget.git"
+  },
   "license": "MIT",
   "dependencies": {
-    "@risingstack/nx-framework": "1.0.0-alpha.5.0.0",
+    "@risingstack/nx-framework": "1.0.0-alpha.6.1.0",
     "whatwg-fetch": "2.0.1"
   },
   "devDependencies": {
